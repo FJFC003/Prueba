@@ -16,7 +16,7 @@ public class EmpleadoService {
     private RestTemplate restTemplate;
 
     // URL base de la API de tu proyecto GestaLab (Ajusta la ruta según tu Controller)
-    private final String BACKEND_URL = "http://localhost:8080/api/empleados"; 
+    private final String BACKEND_URL = "http://localhost:8080/api/gestalab/empleado"; 
 
     public List<EmpleadoDto> obtenerTodos() {
         // Hacemos una petición GET y mapeamos la respuesta a un arreglo de EmpleadoDto

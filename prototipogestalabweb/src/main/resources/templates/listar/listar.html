@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/base}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Lista de Empleados</title>
+</head>
+<body>
+    <div layout:fragment="contenido" class="container-fluid">
+        <h1 class="h3 mb-2 text-gray-800">Gestión de Empleados</h1>
+        <p class="mb-4">Administración del personal técnico y administrativo del laboratorio.</p>
+
+        <a th:href="@{/empleados/nuevo}" class="btn btn-primary mb-3">
+            <i class="fas fa-plus"></i> Nuevo Empleado
+        </a>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Registros Existentes</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Cédula</th>
+                                <th>Cargo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Datos de Prueba</td>
+                                <td>Datos de Prueba</td>
+                                <td>1700000000</td>
+                                <td>Analista</td>
+                                <td>
+                                    <a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

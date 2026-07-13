@@ -13,11 +13,8 @@ import com.uisrael.prototipogestalabweb.services.EmpleadoService;
 
 
 @Controller
-@RequestMapping("/empleado")
+@RequestMapping("/empleados")
 public class EmpleadoController {
-	
-	@Autowired
-    private EmpleadoService empleadoService;
 
     @GetMapping
     public String listarEmpleados(Model model) {

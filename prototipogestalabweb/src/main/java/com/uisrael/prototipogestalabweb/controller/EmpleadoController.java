@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 
 import com.uisrael.prototipogestalabweb.dto.EmpleadoDto;
 import com.uisrael.prototipogestalabweb.services.EmpleadoService;
 
-import ch.qos.logback.core.model.Model;
 
 @Controller
-@RequestMapping("/empleados")
+@RequestMapping("/empleado")
 public class EmpleadoController {
 	
 	@Autowired
@@ -34,7 +34,7 @@ public class EmpleadoController {
     }
 
     @PostMapping("/guardar")
-    public String guardarEmpleado(@ModelAttribute("empleado") EmpleadoDto empleado) {
+    public String guardarEmpleado(@ModelAttribute EmpleadoDto empleado) {
         // Recibe los datos del form HTML y los envía al backend mediante el servicio
         empleadoService.guardar(empleado);
         return "redirect:/empleados"; // Redirige a la lista

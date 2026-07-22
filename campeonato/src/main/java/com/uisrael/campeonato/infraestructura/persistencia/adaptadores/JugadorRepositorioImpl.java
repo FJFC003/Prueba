@@ -28,7 +28,7 @@ public class JugadorRepositorioImpl implements IJugadorRepositorio {
 
 	@Override
 	public Optional<Jugador> buscarPorId(int idJugador) {
-		return Optional.empty();
+		return jpaRepositorio.findById(idJugador).map(entityMapper:: toDomain);
 	}
 
 	@Override

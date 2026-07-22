@@ -37,19 +37,19 @@ public class JugadorController {
 	}
 	
 
-	@GetMapping("query")
+	@GetMapping("/query")
 	public List<JugadorResponseDto>listarTodosJugador(){
 		return jugadorUseCase.listarTodosJugadores()
 				.stream().map(mapper:: toResponseDto).toList();
 	}
 
-	@GetMapping("buscar/{nombre}/{estado}")
+	@GetMapping("/buscar/{nombre}/{estado}")
 	public List<JugadorResponseDto> listarTodos(@PathVariable String nombre, @PathVariable boolean estado) {
 		return jugadorUseCase.buscarJugadorNombre(nombre, estado)
 				.stream().map(mapper::toResponseDto).toList();
 	}
 	
-	@GetMapping("buscar/{nombre}")
+	@GetMapping("/buscar/{nombre}")
 	List<JugadorResponseDto> buscarJugadorNombre(@PathVariable String nombre){
 		return jugadorUseCase.buscarJugadorNombre(nombre)
 				.stream().map(mapper:: toResponseDto).toList();
@@ -59,6 +59,12 @@ public class JugadorController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public JugadorResponseDto guardar(@Valid @RequestBody JugadorRequestDto requestJugador) {          
 		return mapper.toResponseDto(jugadorUseCase.guardar(mapper.toDomain(requestJugador)));
+
+	}
+	
+	@GetMapping("/buscarId/{idJugador}")
+	public JugadorResponseDto buscarJugadorId(@PathVariable int idJugador){
+		return mapper.toResponseDto(jugadorUseCase.findById(idJugador));
 
 	}
 }

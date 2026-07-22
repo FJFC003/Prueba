@@ -45,4 +45,10 @@ public class JugadorUseCaseImpl implements IJugadorUseCase {
 		return repositorio.guardar(nuevoJUgador);
 	}
 
+	@Override
+	public Jugador findById(int id) {
+		return repositorio.buscarPorId(id)
+				.orElseThrow(() -> new RuntimeException("Grupo no encontrado"));
+
+	}
 }

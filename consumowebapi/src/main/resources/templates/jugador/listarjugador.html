@@ -34,7 +34,7 @@
 					<td th:text="${indice.ci}"></td>
 					<td th:text="${indice.fechaNacimiento}"></td>
 					<td th:text="${indice.estadoRegsitro}"></td>
-					<td><a href="" class="btn btn-light"><i class="ti-pencil-alt"></i></a>
+					<td><a th:href="@{/jugadores/editar/{idJugador}(idJugador=${indice.idJugador})}" class="btn btn-light"><i class="ti-pencil-alt"></i></a>
 						<a href="" class="btn btn-light"><i class="ti-trash"></i></a></td>
 				</tr>
 

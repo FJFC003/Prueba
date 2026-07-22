@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.UriBuilder;
 
 import com.uisrael.consumowebapi.model.dto.request.JugadorRequestDto;
 import com.uisrael.consumowebapi.model.dto.response.JugadorResponseDto;
@@ -32,4 +33,10 @@ public class JugadorServiceImpl implements IJugadorService {
 		
 	}
 
+	@Override
+	public JugadorResponseDto buscarPorId(int idJugador) {
+		return webclient.get().uri(uriBuilder -> uriBuilder.path("/jugador/buscarId/{idJugador}")
+				.build(idJugador)).retrieve().bodyToMono(JugadorResponseDto.class).block();
+	}
+	
 }

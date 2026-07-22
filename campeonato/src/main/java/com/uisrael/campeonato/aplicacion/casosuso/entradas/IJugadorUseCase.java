@@ -14,4 +14,6 @@ public interface IJugadorUseCase {
 	List<Jugador> buscarJugadorNombre(String nombre);
 	
 	Jugador guardar(Jugador nuevoJUgador);
+	
+	Jugador findById(int id);
 }

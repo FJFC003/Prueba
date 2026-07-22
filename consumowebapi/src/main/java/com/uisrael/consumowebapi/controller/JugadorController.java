@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,6 +22,7 @@ public class JugadorController {
 	
     @Autowired
 	private IJugadorService servicioJugador;
+    private IEquipo
 	
 	@GetMapping
 	public String listarJugador(Model model) {
@@ -31,7 +33,9 @@ public class JugadorController {
 	
 	@GetMapping("/nuevo")
 	public String nuevoJugador(Model model) {
+		
 		model.addAttribute("jugador", new JugadorRequestDto());
+		
 		return "/jugador/crearjugador";
 	}
 	
@@ -40,6 +44,16 @@ public class JugadorController {
 		jugador.setFechaNacimiento(new Date());
 		servicioJugador.guardarJugador(jugador);
 		return "redirect:/jugadores";
+	}
+	
+	//1.- recuerar id seleccionado  ---- ok
+	//2.- enviar al api para buscarPOI--ok
+	//3.- enviar resultado al html --ok
+	//4.- abrir formulario para editar
+	@GetMapping("/editar/{idJugador}")
+	public String editarJugador(@PathVariable int idJugador, Model model) {
+		model.addAttribute("jugador", servicioJugador.buscarPorId(idJugador));
+		return "/jugador/crearjugador";
 	}
 	
 }
